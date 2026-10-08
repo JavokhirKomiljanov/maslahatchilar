@@ -15,6 +15,12 @@ Bu odamlar bilan uchrashuvga yozilish qiyin. Lekin ular intervyularda va o’z k
 | **Jahongir Ortiqxo’jayev** | AKFA va Artel asoschisi, 2018–2023 yillarda Toshkent shahar hokimi | [o’qish](advisors/jahongir-ortiqxojayev.md) | [matn](https://raw.githubusercontent.com/JavokhirKomiljanov/maslahatchilar/main/prompts/jahongir-ortiqxojayev.txt) |
 | **Alisher Usmanov** | Chustda tug’ilgan moliyachi va investor, USM Holding asoschisi (Metalloinvest, MegaFon). | [o’qish](advisors/alisher-usmanov.md) | [matn](https://raw.githubusercontent.com/JavokhirKomiljanov/maslahatchilar/main/prompts/alisher-usmanov.txt) |
 
+## Tayyor savollar
+
+Har bir maslahatchiga beriladigan savol namunalari: **[SAVOLLAR.md](SAVOLLAR.md)**. Promptni tashlang, keyin shu savollardan birini bering yoki o’zingizga moslang.
+
+Barcha promptlar va savollar bitta faylda: [Maslahatchilar-UZ-promptlar.txt](https://raw.githubusercontent.com/JavokhirKomiljanov/maslahatchilar/main/Maslahatchilar-UZ-promptlar.txt)
+
 ## Qanday ishlatiladi
 
 1. Maslahatchini tanlang. Savolingiz kimning sohasiga yaqin bo’lsa, o’shani oling.
@@ -46,6 +52,28 @@ SAVOLIM:
 ## PDF
 
 [Maslahatchilar-UZ.pdf](Maslahatchilar-UZ.pdf) — to’liq qo’llanma, telefon formati.
+
+## Claude Code uchun
+
+Claude Code ishlatsangiz, maslahatchilarni buyruq qilib qo’ying: [`claude-skill/maslahatchi`](claude-skill/maslahatchi/SKILL.md) papkasini `~/.claude/skills/` ichiga nusxalang.
+
+```text
+/maslahatchi isaev Savdom ikki oydan beri tushyapti, nimadan boshlay?
+/maslahatchi kengash Kredit olib ikkinchi filial ochsammi?   # to’rttasi birga javob beradi
+/maslahatchi savollar                                        # tayyor savollar
+```
+
+## Kod
+
+Hamma narsa bitta fayldan yig’iladi: [`data/advisors.json`](data/advisors.json). Profil matnini shu yerda o’zgartirasiz, sahifalar va PDF qayta yig’iladi.
+
+```bash
+pip install -r tools/requirements.txt
+python tools/build_site.py   # README, SAVOLLAR.md, advisors/, prompts/, docs/ (sayt)
+python tools/render.py       # PDF va promptlar TXT (Google Chrome kerak)
+```
+
+Yangi tadbirkor qo’shish uchun `data/advisors.json` ichidagi `people` ro’yxatiga xuddi shu tuzilmada yangi profil qo’shing va ikkala skriptni ishga tushiring. Qoida bitta: har bir iqtibos manbasi bilan, o’ylab topilgan gap yo’q.
 
 ## Eslatma
 

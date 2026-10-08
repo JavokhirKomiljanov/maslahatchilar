@@ -1,2 +1,5 @@
 research/
+build/
+tools/assets/
+__pycache__/
 *.log
